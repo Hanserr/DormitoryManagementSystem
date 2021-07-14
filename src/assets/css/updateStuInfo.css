@@ -1,0 +1,49 @@
+body{
+  padding: 0;
+  margin: 0;
+  background-color: white;
+}
+.udMain{
+  position: fixed;
+  z-index: 100;
+  height: 100vh;
+  width: 85vw;
+}
+input{
+  border: none;
+  outline: none;
+  border-bottom: 1px solid salmon;
+  background-color: #909399;
+  color: #ffffff;
+
+}
+button{
+  height: 30px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid white;
+  margin-left: 32px;
+  cursor: pointer;
+}
+button:active{
+}
+.inp1{
+  width: 210px;
+  margin: 10px auto;
+}
+.inp2{
+  width: 225px;
+  margin-left:29px ;
+}
+.content{
+  background-color: #909399;
+  width: 300px;
+  height: 160px;
+  margin: 10% auto;
+  border-radius: 10px;
+  color: #ffffff;
+}
+.butt{
+  width: 180px;
+  margin: 20px auto;
+}
