@@ -18,7 +18,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        test: /\.(eot|svg|ttf|woff|woff2|otf)(\?\S*)?$/,
         loader: 'file-loader'
       },
       {
@@ -40,8 +40,12 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
-        }
-      }
+        },
+      },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: 'file-loader',
+      },
     ]
   },
   resolve: {

@@ -1,20 +1,14 @@
 <template>
   <div id="app">
-    <div class="nav">
-      <leftNav></leftNav>
-    </div>
-    <div class="right">
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 <script>
 export default {
   name: 'App',
-  method:{
-  }
 }
 </script>
 <style scoped>
   @import "./assets/css/app.css";
+  @import "./assets/css/font.css";
 </style>

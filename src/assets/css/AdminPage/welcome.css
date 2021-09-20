@@ -1,0 +1,25 @@
+body{
+  padding: 0;
+  margin: 0;
+  font-family: Harmony;
+}
+.welcome-main{
+  width: 100%;
+  height: 100%;
+}
+.welcome-main img{
+  width: 100%;
+  height: 100%;
+}
+.s1{
+  font-size:40px;
+  text-align: center;
+}
+.banner{
+  color: white;
+  width: 350px;
+  height: 100px;
+  position: fixed;
+  top: 200px;
+  left: 900px;
+}

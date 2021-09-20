@@ -1,0 +1,83 @@
+body{
+  padding: 0;
+  margin: 0;
+  font-family: Harmony;
+}
+.addRightWindow{
+  position: fixed;
+  background-color: #c4dae6;
+  width: 290px;
+  height: 370px;
+  left: 50%;
+  top: 30%;
+  z-index: 100;
+  border: 1px solid #e2f8c0;
+  border-radius: 15px;
+}
+.addRightWindow-stuid,.addRightWindow-name,.addRightWindow-age{
+  width: 200px;
+  height: 35px;
+  margin:15px auto;
+}
+.addRightWindow-stuid input{
+  border: none;
+  border-bottom: 1px solid #070707;
+  width: 200px;
+  height: 35px;
+  background-color: transparent;
+  outline: none;
+}
+.addRightWindow-name input{
+  border: none;
+  border-bottom: 1px solid black;
+  width: 200px;
+  height: 35px;
+  background-color: transparent;
+  outline: none;
+}
+.addRightWindow-age input{
+  border: none;
+  border-bottom: 1px solid black;
+  width: 200px;
+  height: 35px;
+  background-color: transparent;
+  outline: none;
+}
+.addRightWindow-gender{
+  width: 200px;
+  height: 30px;
+  margin-left: 50px;
+}
+.addRightWindow-gender input{
+  margin-left: 10px;
+}
+.addRightWindow-department{
+  width: 240px;
+  height: 30px;
+  margin-left: 50px;
+  margin-top: 15px;
+}
+.addRightWindow-department select{
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+.addRightWindow-role{
+  width: 200px;
+  height: 30px;
+  margin-top: 15px;
+  margin-left: 50px;
+}
+.addRightWindow-submit{
+  width: 250px;
+  height: 40px;
+  margin: 20px auto;
+}
+.addRightWindow-submit button{
+  width: 90px;
+  height: 40px;
+  border-radius: 15px;
+  border: none;
+  margin-left: 25px;
+  cursor: pointer;
+}

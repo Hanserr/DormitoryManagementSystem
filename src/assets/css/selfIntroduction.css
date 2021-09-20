@@ -1,0 +1,88 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: Harmony;
+}
+.selfIntroduction{
+  width: 1400px;
+  margin: 0 auto;
+  height: auto;
+  background-color: rgba(222, 222, 222, 0.48);
+}
+.selfIntroduction video{
+  position: fixed;
+  right:-100px;
+  bottom: -100px;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -9999;
+}
+.selfIntroduction-top{
+  width: 1400px;
+  height: 200px;
+  overflow: hidden;
+}
+.selfIntroduction-top-avatar{
+  width: 80px;
+  height: 80px;
+  margin: 40px auto;
+  z-index: 99;
+}
+.selfIntroduction-middle{
+  width: 1400px;
+  height: 1000px;
+  margin: 0 auto;
+}
+.selfIntroduction-middle-favSinger{
+  -moz-user-select:none; /* Firefox私有属性 */
+  -webkit-user-select:none; /* WebKit内核私有属性 */
+  -ms-user-select:none; /* IE私有属性(IE10及以后) */
+  -khtml-user-select:none; /* KHTML内核私有属性 */
+  -o-user-select:none; /* Opera私有属性 */
+  user-select:none; /* CSS3属性 */
+  width: 100%;
+  height: 500px;
+}
+.selfIntroduction-middle-favSinger-title{
+  text-align: center;
+  background-color: rgba(107, 107, 107, 0.68);
+  height: 70px;
+  width: 100%;
+}
+.selfIntroduction-middle-favSinger-title span{
+  margin-top: -5px;
+  color: #30eabf;
+}
+.selfIntroduction-middle-favSinger-detail{
+  width: 100%;
+  height: 400px;
+}
+.selfIntroduction-middle-favSinger-detail-son{
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
+  margin-left: 30px;
+  margin-top: 30px;
+  float: left;
+  overflow: hidden;
+}
+.selfIntroduction-middle-favSinger-detail-intro{
+  width: 100%;
+  height: 100px;
+  background-color: rgba(82, 82, 82, 0.66);
+  margin-top: 128px;
+  text-align: center;
+  transition: 0.2s linear;
+}
+.selfIntroduction-middle-favSinger-detail-intro:hover{
+  margin-top: 50px;
+}
+
+
+
+
+
+
+

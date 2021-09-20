@@ -1,0 +1,67 @@
+body{
+  padding: 0;
+  margin: 0;
+  font-family: Harmony;
+}
+.addRight{
+  width: 100%;
+  height: 100%;
+  background-color: #c4dae6;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+.addRight-top{
+  width: 280px;
+  height: 40px;
+  margin: 50px auto;
+}
+.addRight-bottom{
+  background-color: transparent;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid white;
+  transition: 0.3s;
+}
+.addRight-content,.addRight-remainContent{
+  float: left;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 240px;
+  height: 200px;
+  background-color: rgba(245, 244, 240, 0.4);
+}
+.addRight-son-content{
+  height: 120px;
+  width: 200px;
+  margin: 20px auto;
+}
+.el-icon-plus{
+  font-size: 28px;
+  color: #8c939d;
+  width: 100%;
+  height: 100%;
+  line-height: 178px;
+  text-align: center;
+  cursor: pointer;
+}
+.addRight-son-button{
+  width: 70px;
+  height: 30px;
+  margin: 0 auto;
+}
+.addRight-son-button button{
+  width: 70px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f2f8e8;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+
+
+
+
