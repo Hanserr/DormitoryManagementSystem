@@ -52,7 +52,7 @@
         <transition name="BottomEnterAndLeave">
           <div class="ClientPage-Bottom-Bottom" :style="{top:bottomTop+'px'}">
             <span style="color: #838383;margin-left: 220px;width: 115px">Developed By</span>
-            <router-link style="color: #0fa451;text-decoration: none;margin-top: 15px;margin-left: -8px" to="/introduction">Gu</router-link>
+            <router-link style="color: #0fa451;text-decoration: none;margin-top: 15px;margin-left: -8px" to="/introduction" target="_blank">Gu</router-link>
             <span style="color: #838383;width: 210px">. © 2021 All Rights Reserved</span>
             <span style="color: #838383;margin-left: 300px">Follow me&nbsp;&nbsp;</span>
             <img src="../assets/img/clientPage/github.png" alt="github" class="ClientPage-Bottom-Bottom-Icon" @click="openGithub">

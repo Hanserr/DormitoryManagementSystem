@@ -83,7 +83,7 @@ export default {
 
       songList:[
         1804540509,//云端飞行
-        535097194,//Nothing to lose
+        1457707546,//love story
         1837826526,//数羊
         1500455486,//侥幸
         1436560359,//我试着
@@ -197,7 +197,7 @@ export default {
       let detailUrl = 'https://api.imjad.cn/cloudmusic/?type=detail&id='+id
       axios.get(detailUrl).then((res) => {
         //获取音乐细节
-        this.song.musicTitle = res.data.songs[0].al.name//歌名
+        this.song.musicTitle = res.data.songs[0].name//歌名
         this.song.artist = res.data.songs[0].ar[0].name//歌手
         this.song.coverPath = res.data.songs[0].al.picUrl//封面路径
         axios.get(musicUrl).then((res) => {
@@ -272,7 +272,7 @@ export default {
       this.currentSong = this.songList[0]
       let url = 'https://api.imjad.cn/cloudmusic/?type=song&id='+this.currentSong+'&br=320000'
       axios.get("https://api.imjad.cn/cloudmusic/?type=detail&id="+this.currentSong).then((res) => {
-        this.song.musicTitle = res.data.songs[0].al.name//歌名
+        this.song.musicTitle = res.data.songs[0].name//歌名
         this.song.artist = res.data.songs[0].ar[0].name//歌手
         this.song.coverPath = res.data.songs[0].al.picUrl//封面路径
         axios.get(url).then((res) => {

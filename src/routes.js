@@ -89,7 +89,7 @@ const routes = [
     path: '/introduction',
     component: selfIntroduction,
     meta: {
-      title: '关于我'
+      title: '禁书屋~~'
     }
   },
 ]
