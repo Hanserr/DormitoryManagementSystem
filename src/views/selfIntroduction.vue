@@ -1,7 +1,7 @@
 <template>
   <div class="selfIntroduction">
 <!--    视频背景-->
-    <video src="../assets/video/video.mp4" autoplay="autoplay" loop="loop" ref="video" v-show="isLoaded"></video>
+    <video src="../assets/video/video.mp4" autoplay="autoplay" loop="loop" ref="video" muted="muted" v-show="isLoaded"></video>
     <img src="../assets/img/selfIntroduction/bgvideo.png" alt="bg" v-show="!isLoaded" class="selfIntroduction-bgPic">
 <!--    中间内容部分-->
     <div class="selfIntroduction-container">

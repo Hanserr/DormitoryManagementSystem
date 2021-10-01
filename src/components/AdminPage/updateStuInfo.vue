@@ -2,17 +2,18 @@
 <div class="udMain">
   <div class="udMain-content">
     <div class="inp1">
-      Name：<input v-model=stu.name></input>
+      姓名：<input v-model=stu.name></input>
     </div>
     <div class="inp1">
-      &nbsp;&nbsp;Role：<input v-model="stu.role"></input>
+      职务：<input type="radio" value="1" v-model="stu.role">寝室长
+      <input type="radio" value="0" v-model="stu.role">无
     </div>
     <div class="inp2">
-      D-Num：<input v-model=stu.dormitoryNum></input>
+      宿舍号：<input v-model=stu.dormitoryNum></input>
     </div>
     <div class="butt">
-      <button @click="confirm">Confirm</button>
-      <button @click="exit">Cancel</button>
+      <button @click="confirm">确认</button>
+      <button @click="exit">取消</button>
     </div>
   </div>
 </div>
@@ -26,7 +27,7 @@ export default {
     return{
       stu:{
         name:this.name,
-        role:this.role,
+        role:this.role==='无'?'0':'1',
         dormitoryNum:this.dormitoryNum,
         stuid:this.stuid
       }
@@ -42,7 +43,10 @@ export default {
       let url1 = "http://localhost:8090/updateStu"
       axios.post(url1,this.stu).then(res=>{
         if (res.data.code === 200){
-            this.$emit('msg',res.data.t)
+          res.data.t.role =  res.data.t.role===0?'无':'寝室长'
+          this.$emit('msg',res.data.t)
+        }else{
+          this.$message.error(res.data.msg)
         }
       })
     }

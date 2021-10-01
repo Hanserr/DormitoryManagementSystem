@@ -48,7 +48,7 @@
         prop="gender"
         label="性别"
         width="180"
-        :filters="[{text: 'Boy', value: 'Boy'},{text: 'Girl', value: 'Girl'}]"
+        :filters="[{text: '男', value: '男'},{text: '女', value: '女'}]"
         :filter-method="filterHandler">
       </el-table-column>
 
@@ -78,10 +78,10 @@
       <el-table-column
         fixed="right"
         label="操作"
-        width="100">
+        width="180">
         <template slot-scope="scope">
-          <el-button @click="manage(scope.row)" type="text" size="small">&nbsp;&ensp;Manage</el-button>
-          <el-button @click="del(scope.row.stuid)" type="text" size="small">Delete</el-button>
+          <el-button @click="manage(scope.row)" type="text" size="small">更改</el-button>
+          <el-button @click="del(scope.row.stuid)" type="text" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -111,7 +111,18 @@ export default {
     }
   },
   methods: {
+    //性别和职务数字转化为字符串
+    intToString(dataTable){
+      if (dataTable !== null){
+        for (let i = 0;i < dataTable.length ;i++){
+          dataTable[i].gender = dataTable[i].gender===0?'女':'男'
+          dataTable[i].role = dataTable[i].role===0?'无':'寝室长'
+        }
+        return dataTable
+      }
+    },
     // manage
+    //更改学生数据
     manage(data){
       this.visible = true
       this.sonName = data.name
@@ -120,6 +131,7 @@ export default {
       this.sonStuid = data.stuid
     },
     // delete
+    //删除数据
     del(id){
       this.$confirm('Are you sure to delete this data?The operation is not reversible！', 'Notice', {
         confirmButtonText: 'Confirm',
@@ -155,6 +167,7 @@ export default {
 
     },
     //submit and close pop-up window
+    //提交并关闭弹窗
     confirmAndClose(data) {
       if (data !== null){
         for (let i = 0;i<this.tableData.length;i++){
@@ -166,10 +179,12 @@ export default {
       this.visible = false
     },
     //close pop-up window
+    //关闭弹窗
     cancelAndClose(){
       this.visible = false
     },
     //search
+    //搜索
     query(){
       let url = 'http://localhost:8090/queryByCondition'
       if(this.input !== '') {
@@ -182,7 +197,7 @@ export default {
               center: true,
             });
           }
-          this.tableData = res.data.result
+          this.tableData = this.intToString(res.data.result)
           this.departmentListJson = res.data.departmentList
           this.dormitoryListJson = res.data.dormitoryList
           //parse string to number
@@ -207,6 +222,7 @@ export default {
       }
     },
     //filter
+    //过滤器
     filterHandler(value, row, column) {
       const property = column['property'];
       return row[property] === value;

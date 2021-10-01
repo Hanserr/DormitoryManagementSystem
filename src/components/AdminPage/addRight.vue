@@ -16,16 +16,16 @@
 <!--occupied-->
       <div class="addRight-content" v-for="info in stuInfo">
         <div class="addRight-son-content">
-          <span>&nbsp;&nbsp;&nbsp;姓名：{{info.name}}</span>
+          <span>姓名：{{info.name}}</span>
           <br>
-          <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SID：{{info.stuid}}</span>
+          <span>&nbsp;&nbsp;SID：{{info.stuid}}</span>
           <br>
-          <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄：{{info.age}}</span>
+          <span>年龄：{{info.age}}</span>
           <br>
           <span>院系：{{info.departmentName}}</span>
         </div>
         <div class="addRight-son-button">
-          <button @click="del(info.stuid)">Delete</button>
+          <button @click="del(info.stuid)">删除</button>
         </div>
       </div>
 <!--spare-->
@@ -96,14 +96,21 @@ export default {
     },
     //delete data
     del(id){
-      if (window.confirm("Are you sure to delete this data?")){
+      if (window.confirm("确定删除这条数据?")){
         let url = "http://localhost:8090/delete"
         axios.post(url,id).then(res=>{
           if (res.data.code === 500){
-            this.$message.error("Delete Failed")
+            this.$message.error("删除失败")
+          }else {
+            for (let i = 0;i<this.stuInfo.length;i++){
+              if (this.stuInfo[i].stuid === id){
+                this.stuInfo.splice(i,1)
+                return
+              }
+            }
           }
         }).catch(()=>{
-          this.$message.error("Delete Failed")
+          this.$message.error("删除失败")
         })
       }
     }

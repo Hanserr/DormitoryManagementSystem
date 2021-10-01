@@ -5,7 +5,7 @@
 
       <div class="SOTDormitory-top-inp">
         <el-input
-          placeholder="再次输入宿舍号"
+          placeholder="输入宿舍号"
           prefix-icon="el-icon-search"
           v-model="input2"
           @keyup.enter.native="searchByDNum(input2)">
@@ -14,18 +14,18 @@
 
     </div>
 
-    <div class="SOTDormitory-bottom">
+    <div class="SOTDormitory-bottom"
+         v-loading="loading"
+         element-loading-text="拼命加载中"
+         element-loading-spinner="el-icon-loading"
+         element-loading-background="rgba(0, 0, 0, 0.8)">
 
       <div class="SOTDormitory-bottom-left">
         <ul class="SOTDormitory-bottom-left-son" v-infinite-scroll="add">
           <li v-for="i in count" class="infinite-list-item" @click="searchByDNum(i)">{{i}}</li>
         </ul>
       </div>
-      <div class="SOTDormitory-bottom-right"
-           v-loading="loading"
-           element-loading-text="拼命加载中"
-           element-loading-spinner="el-icon-loading"
-           element-loading-background="rgba(0, 0, 0, 0.8)">
+      <div class="SOTDormitory-bottom-right">
         <div class="SOTDormitory-bottom-right-son">
 
           <div class="SOTDormitory-bottom-table">

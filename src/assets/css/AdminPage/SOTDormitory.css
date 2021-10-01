@@ -10,6 +10,7 @@ ul,li{
 .SOTDormitory{
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 .SOTDormitory-top{
   width: 97.5%;
@@ -26,18 +27,18 @@ ul,li{
   margin: 30px auto;
 }
 .SOTDormitory-bottom{
-  width: 1290px;
-  height: 82%;
+  width: 1450px;
+  height: 690px;
   border-radius: 10px;
-  margin: 10px auto;
+  margin-left: 20px;
 }
 .SOTDormitory-bottom-left{
   width: 190px;
-  height: 100%;
+  height: 680px;
   overflow-y: auto;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
-  background-color: #b5c7c9;
+  background-color: #61c5d0;
   float: left;
 }
 .SOTDormitory-bottom-left-son li{
@@ -52,20 +53,21 @@ ul,li{
   cursor: pointer;
 }
 .SOTDormitory-bottom-right{
-  width: 1100px;
-  height: 40vw;
+  width: 1235px;
+  height: 680px;
   float: left;
   background: url("../../img/AdminPage/SOTDormitory-bg.png") no-repeat;
   background-size: 100% 100%;
   border-radius: 10px;
+  margin-left: 20px;
 }
 .SOTDormitory-bottom-right-son{
-  width: 1000px;
+  width: 1200px;
   height: 550px;
   margin: 25px auto;
 }
 .SOTDormitory-bottom-a{
-  width: 200px;
+  width: 240px;
   height: 50px;
   text-align: center;
   float: left;

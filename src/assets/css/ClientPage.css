@@ -7,8 +7,7 @@ body{
 .ClientPage-Container{
   width: 100%;
   height: 900px;
-  background: url("../img/clientPage/hogwarts.jpg") no-repeat;
-  background-size: cover;
+  background-color: #e8e0b6;
 }
 .ClientPage{
   width: 1400px;

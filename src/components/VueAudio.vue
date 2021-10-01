@@ -15,13 +15,17 @@
       <!--    标题；歌手-->
       <div class="VueAudio-title">
 <!--          歌曲名-->
-          <div class="VueAudio-title-musicName">
+        <div class="VueAudio-title-container" style="left:140px;top:3px">
+          <div id="VueAudio-title-musicName" ref="musicTitle">
             <span>{{this.song.musicTitle}}</span>
           </div>
+        </div>
 <!--          歌手名-->
-          <div class="VueAudio-title-artist">
+        <div class="VueAudio-title-container" style="left: 140px;top: 23px">
+          <div class="VueAudio-title-artist"  ref="musicSinger">
             <span>{{this.song.artist}}</span>
           </div>
+        </div>
       </div>
 <!--      进度条-->
       <p style="left:35px" class="VueAudio-control-time">{{formatTime(this.song.currentTime)}}</p>
@@ -40,7 +44,7 @@
         </div>
         <img :src="volumeImg" alt="volume" @click.stop="muted" @mouseenter="displayVolume" @mouseleave="hideVolume">
       </div>
-<!--      -->
+<!--     播放模式选择 -->
       <div class="VueAudio-control-mode">
         <img :src="modeImg" :title="modeDescription" alt="mode" @click="chooseMode(playerMode)" style="width: 20px;height: 20px;margin-left: 5px">
       </div>
@@ -98,15 +102,15 @@ export default {
 
     }
   },
-  methods:{
+  methods: {
     //控制播放或暂停
-    play(){
-      if (this.$refs.audio.paused){
+    play() {
+      if (this.$refs.audio.paused) {
         this.$refs.audio.play()
         this.playImgSrc = require("../assets/img/player/play.png")
         this.diskTop = 10
         this.showRotate = 'running'
-      }else{
+      } else {
         this.playImgSrc = require("../assets/img/player/pause.png")
         this.diskTop = 40
         this.showRotate = 'paused'
@@ -160,7 +164,6 @@ export default {
       }
       this.updateMusic(this.songList[previousSongId])
     },
-
     //下一首
     next(){
       let currentSongId = null
@@ -176,8 +179,8 @@ export default {
         nextSongId = 0
       }else{
         nextSongId = currentSongId+1
-      }
 
+      }
       switch (this.playerMode){
         case 1:
           this.updateMusic(this.songList[nextSongId]);
@@ -287,7 +290,6 @@ export default {
 
       //加载歌曲时缓冲
       this.$refs.audio.onprogress = () => {
-        console.log(this.$refs.audio.buffered.length)
         if (this.$refs.audio.buffered.length > 0){
           for (let i = 0; i<this.$refs.audio.buffered.length; i++){
             let start = this.$refs.audio.buffered.start(i)
@@ -371,9 +373,10 @@ export default {
 
     // 同时处理点击进度条跳转事件
     mouseBarDown(e){
-      console.log('test')
       this.$refs.audio.currentTime =  Math.floor(this.$refs.audio.duration*(this.commonModifyCSS(e)/150))
-      this.play()
+      this.$refs.audio.play()
+      this.diskTop = 10
+      this.showRotate = 'running'
     },
 
     //进度点处落下鼠标
@@ -494,7 +497,6 @@ export default {
   mounted() {
     this.create()
   },
-
   beforeDestroy() {
     clearTimeout(this.showVolumeTimer)
   },
@@ -507,6 +509,7 @@ body{
   padding: 0;
   font-family: Harmony;
 }
+/*黑胶旋转*/
 @keyframes move {
   0%{
     transform: rotate(0deg);
@@ -515,6 +518,16 @@ body{
     transform: rotate(360deg);
   }
 }
+/*标题滚动*/
+@keyframes titleMove {
+  0%{
+    transform: translateX(100px);
+  }
+  100%{
+    transform: translateX(-300px);
+  }
+}
+
 .VueAudio {
   /*禁止选择*/
   -moz-user-select:none; /* Firefox私有属性 */
@@ -631,23 +644,25 @@ body{
   color: #4c4d4c;
   top: -4px;
 }
-.VueAudio-title-musicName{
-  position: absolute;
-  z-index: 1;
-  height: 15px;
-  width: 150px;
+/*歌曲名*/
+#VueAudio-title-musicName{
   text-align: center;
-  left: 110px;
-  top: 3px;
+  width: 300px;
+  height: 100%;
+  animation: linear infinite titleMove 5s;
 }
 /*歌手*/
 .VueAudio-title-artist{
-  position: absolute;
-  height:15px;
-  width: 150px;
-  top: 28px;
-  left: 110px;
   text-align: center;
+  width: auto;
+  height: 100%;
+  transition: 5s linear;
+}
+.VueAudio-title-container{
+  position: absolute;
+  height: 15px;
+  width: 100px;
+  overflow: hidden;
 }
 /*音量控制*/
 .VueAudio-control-volume{

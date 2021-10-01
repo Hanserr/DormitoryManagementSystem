@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style scoped>
-@import "../assets/css/AdminPage.css";
+@import "../assets/css/AdminPage/AdminPage.css";
 @import "../assets/css/font.css";
 input{
   cursor: pointer;

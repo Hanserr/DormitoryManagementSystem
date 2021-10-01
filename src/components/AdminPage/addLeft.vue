@@ -1,13 +1,13 @@
 <template>
   <div class="addLeft">
-    <div class="inp">
-      <div class="stuId"><span>SID</span></div>
-      <div class="name"><span>姓名</span></div>
-      <div class="age"><span>年龄</span></div>
-      <div class="gender"><span>性别</span></div>
-      <div class="department"><span>院系</span></div>
-      <div class="role"><span></span>宿舍职务</div>
-      <div class="dormitoryNum"><span>宿舍号</span></div>
+    <div class="title">
+      <div class="stuId" style="margin-left: 100px"><span>SID</span></div>
+      <div class="name" style="margin-left: 40px"><span>姓名</span></div>
+      <div class="age" style="margin-left: 40px"><span>年龄</span></div>
+      <div class="gender" style="margin-left: 60px"><span>性别</span></div>
+      <div class="department" style="margin-left: 80px"><span>院系</span></div>
+      <div class="role" style="margin-left: 100px"><span></span>宿舍职务</div>
+      <div class="dormitoryNum" style="margin-left: 50px"><span>宿舍号</span></div>
     </div>
 <!--    data area-->
 <!--    matching regular-->
@@ -20,9 +20,9 @@
       <input type="text" class="inp-age" v-model="info.age" onkeyup="this.value=this.value.replace(/[^0-9]/,'')"></input>
 <!--      gender-->
       <div class="select-g">
-        <input type="radio" v-model="info.gender" value="Boy">男
+        <input type="radio" v-model="info.gender" value="1">男
         <br>
-        <input type="radio" v-model="info.gender" value="Boy">女
+        <input type="radio" v-model="info.gender" value="0">女
       </div>
 <!--      faculty-->
       <div class="sel">
@@ -34,7 +34,7 @@
       <div class="select-r">
         <input type="radio" v-model="info.role" value="Leader">寝室长
         <br>
-        <input type="radio" v-model="info.role" value="Nothing">无&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" v-model="info.role" value="Nothing">无&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </div>
 <!--     dormitoryNum -->
       <input type="text" class="inp-dNum" v-model="info.dormitoryNum" onkeyup="this.value=this.value.replace(/[^0-9]/,'')"></input>
@@ -89,7 +89,7 @@ export default {
         //determine whether data had filled fully
         if (judge === false){
           this.$message({
-            message: 'Please fill data fully',
+            message: '请填满行内数据',
             type: 'warning'
           });
           return
@@ -101,7 +101,7 @@ export default {
       }
       //judge whether all data is null
       if (allJudge === 0){
-        this.$message.error('What are you want to submit？');
+        this.$message.error('你这是想提交什么？');
       }else{
         let url = "http://localhost:8090/addStudent"
         axios.post(url,newInfos).then(res=>{
@@ -109,13 +109,13 @@ export default {
             this.$message.error(res.data.msg);
           }else{
             this.$message({
-              message: 'Upload Successfully！',
+              message: '上传成功！',
               type: 'success'
             });
           }
         }).catch(error=>{
           console.log(error)
-          this.$message.error('Upload Failed！');
+          this.$message.error('上传失败！');
         })
 
       }
@@ -128,7 +128,7 @@ export default {
         console.log(res.data.result)
       }).catch(error=>{
         console.log(error)
-        this.$message.error('Get Faculty List Failed！');
+        this.$message.error('获取宿舍列表失败！');
       })
     },
 

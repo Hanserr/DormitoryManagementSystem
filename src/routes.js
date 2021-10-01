@@ -9,7 +9,7 @@ import SOTDormitory from "./components/AdminPage/SOTDormitory";
 import AdminPage from "./views/AdminPage";
 import ClientPage from "./views/ClientPage";
 import selfIntroduction from "./views/selfIntroduction";
-
+import adminLoginPage from "./components/AdminPage/adminLoginPage";
 const routes = [
   {
     name: 'AdminPage',
@@ -92,5 +92,13 @@ const routes = [
       title: '禁书屋~~'
     }
   },
+  {
+    name:'adminLoginPage',
+    path: '/adminLogin',
+    component: adminLoginPage,
+    meta: {
+    title:'管理员登录'
+    }
+  }
 ]
 export default routes

@@ -8,13 +8,11 @@ import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router';
 import routes from "./routes.js";
 import {drag} from './components/Js/drag'
-import {vueBaberrage} from 'vue-baberrage'
 
 Vue.use(ElementUI);
 Vue.use(VueRouter)
 Vue.component("leftNav",leftNav)
 Vue.use(VueAxios,axios)
-Vue.use(vueBaberrage)
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 axios.defaults.baseURL = 'http://localhost:8090'
 
