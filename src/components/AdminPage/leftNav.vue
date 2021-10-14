@@ -80,7 +80,7 @@
 
         </el-submenu>
 
-        <el-menu-item index="6">
+        <el-menu-item index="6" route="/AdminPage/admin">
           <i class="el-icon-s-custom"></i>
           <span slot="title">管理员</span>
         </el-menu-item>

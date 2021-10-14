@@ -12,7 +12,7 @@
     <!--      avatar area on the right side-->
         <div class="ClientPage-Top-right">
     <!--      user avatar-->
-            <div class="ClientPage-Top-right-avatar-img" @mouseenter="displayMenu" @mouseleave="hideMenu"></div>
+            <div class="ClientPage-Top-right-avatar-img" @mouseenter="displayMenu" @mouseleave="hideMenu" @click="openUserCenter"></div>
             <!--      user operation-->
             <transition name="fade">
               <div class="ClientPage-Top-right-avatar-background" v-show="isDisplay" @mouseenter="displayMenu" @mouseleave="hideMenu">
@@ -20,11 +20,11 @@
                 <div class="ClientPage-Top-right-avatar-name" style="margin-top: 35px;cursor: default"><span>username</span></div>
                 <hr style=" width: 160px;height: 1px;background-color: #eaeaea;border: none">
       <!--            personal center-->
-                <div class="ClientPage-Top-right-avatar-operation" @click="center"><span>Personal Center</span></div>
-                <div class="ClientPage-Top-right-avatar-operation" @click="detail"><span>Dormitory detail</span></div>
+                <div class="ClientPage-Top-right-avatar-operation" @click="openUserCenter">个人中心</div>
+                <div class="ClientPage-Top-right-avatar-operation" @click="detail">宿舍详情</div>
                 <hr style=" width: 160px;height: 1px;background-color: #eaeaea;border: none">
                 <!--            logout-->
-                <div class="ClientPage-Top-right-avatar-operation" @click="logout"><span>Logout</span></div>
+                <div class="ClientPage-Top-right-avatar-operation" @click="logout">注销</div>
               </div>
             </transition>
         </div>
@@ -56,12 +56,10 @@
             <span style="color: #838383;width: 210px">. © 2021 All Rights Reserved</span>
             <span style="color: #838383;margin-left: 300px">Follow me&nbsp;&nbsp;</span>
             <img src="../assets/img/clientPage/github.png" alt="github" class="ClientPage-Bottom-Bottom-Icon" @click="openGithub">
-            <img src="../assets/img/clientPage/twitter.png" alt="twitter" class="ClientPage-Bottom-Bottom-Icon" @click="openTwitter">
-            <img src="../assets/img/clientPage/facebook.png" alt="facebook" class="ClientPage-Bottom-Bottom-Icon" @click="openFacebook">
             <img src="../assets/img/clientPage/bilibili.png" alt="bilibili" class="ClientPage-Bottom-Bottom-Icon" @click="openBilibili" style="width: 55px;height: 55px;margin-top: -5px">
             <img src="../assets/img/clientPage/NEM.png" alt="NEM" class="ClientPage-Bottom-Bottom-Icon" @click="openNEM">
             <div style="width: 100px;height: 30px;margin-left: 100px;margin-top: 10px">
-              <router-link to="/AdminPage" style="text-decoration: none" target="_blank">Admin Entry</router-link>
+              <router-link to="/adminLogin" style="text-decoration: none" target="_blank">Admin Entry</router-link>
             </div>
           </div>
         </transition>
@@ -110,8 +108,9 @@ export default {
     },
 
     //click will skip to the personal center
-    center(){
-
+    openUserCenter(){
+      let {href} = this.$router.resolve('/userInfo')
+      window.open(href,'_blank')
     },
 
 
@@ -145,12 +144,6 @@ export default {
     },
     openGithub(){
       window.open('https://github.com/Hanserr','_blank')
-    },
-    openTwitter(){
-      window.open('https://twitter.com/Biscuits02?t=K9JGbRnrL9R47WgxMBNrew&s=09','_blank')
-    },
-    openFacebook(){
-      window.open('https://www.facebook.com/profile.php?id=100049835272770','_blank')
     },
     openBilibili(){
       window.open('https://space.bilibili.com/53957641','_blank')

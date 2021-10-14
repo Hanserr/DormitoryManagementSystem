@@ -13,7 +13,7 @@ body{
 }
 .inp{
   background-color: rgba(151, 145, 160, 0.18);
-  width: 90%;
+  width: 1150px;
   height: 55px;
   margin: 10px auto;
   border-radius: 10px;
@@ -74,7 +74,6 @@ body{
   width: 120px;
   height: 25px;
   margin-top: 10px;
-  margin-left: 15px;
   border: none;
   border-bottom: 1px solid #b1b0b1;
   outline: none;

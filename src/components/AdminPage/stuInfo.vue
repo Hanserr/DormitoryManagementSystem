@@ -28,26 +28,26 @@
       <el-table-column
         prop="stuid"
         label="SID"
-        width="180">
+        width="160">
       </el-table-column>
 
       <el-table-column
         prop="name"
         label="姓名"
-        width="180">
+        width="160">
       </el-table-column>
 
       <el-table-column
         prop="age"
         label="年龄"
-        width="180"
+        width="160"
         sortable>
       </el-table-column>
 
       <el-table-column
         prop="gender"
         label="性别"
-        width="180"
+        width="160"
         :filters="[{text: '男', value: '男'},{text: '女', value: '女'}]"
         :filter-method="filterHandler">
       </el-table-column>
@@ -55,7 +55,7 @@
       <el-table-column
         prop="departmentName"
         label="院系"
-        width="180"
+        width="160"
         :filters="departmentListJson"
         :filter-method="filterHandler">
       </el-table-column>
@@ -63,7 +63,7 @@
       <el-table-column
         prop="role"
         label="宿舍职务"
-        width="180"
+        width="160"
         :filters="[{text: 'leader', value: 'leader'},{text: 'Nothing', value: 'Nothing'}]"
         :filter-method="filterHandler">
       </el-table-column>
@@ -191,15 +191,15 @@ export default {
         this.loading = true
         axios.post(url, this.input).then(res => {
           this.loading = false
-          if (res.data.result.length<=0){
+          if (res.data.data.length<=0){
             this.$message({
               message: "No data was queried",
               center: true,
             });
           }
-          this.tableData = this.intToString(res.data.result)
-          this.departmentListJson = res.data.departmentList
-          this.dormitoryListJson = res.data.dormitoryList
+          this.tableData = this.intToString(res.data.data[0])
+          this.departmentListJson = res.data.data[1]
+          this.dormitoryListJson = res.data.data[2]
           //parse string to number
           for (let i = 0;i<this.dormitoryListJson.length;i++){
             let common = parseInt(this.dormitoryListJson[i].value)

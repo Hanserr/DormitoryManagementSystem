@@ -11,12 +11,12 @@ body{
 /*主体部分*/
 .main{
   margin-top: 20px;
-  height: 95%;
-  width: 85%;
+  height: 700px;
+  width: 1300px;
 }
 /*表格区域*/
 .form{
-  width: 1400px;
+  width: 1300px;
   margin-top: 15px;
 }
 /*搜索区域*/

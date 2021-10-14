@@ -9,15 +9,17 @@ const drag = Vue.directive('drag',{
       //鼠标相对元素的位置
       let mouseAndBoxLeftDis = e.clientX - player.parentNode.offsetLeft
       let mouseAndBoxTopDis = e.clientY - player.parentNode.offsetTop
+      let left,top,ResWidth,ResHeight
+
       //鼠标移动事件
       document.onmousemove = (e) =>{
         //元素位置
-        let left = e.clientX - mouseAndBoxLeftDis
-        let top = e.clientY - mouseAndBoxTopDis
+        left = e.clientX - mouseAndBoxLeftDis
+        top = e.clientY - mouseAndBoxTopDis
 
         //最上层父元素的宽度 - 播放器宽度 得到播放器可移动的宽度限制。高度同理
-        let ResWidth = player.parentNode.parentNode.offsetWidth - player.parentNode.offsetWidth;
-        let ResHeight = player.parentNode.parentNode.offsetHeight - player.parentNode.offsetHeight;
+        ResWidth = player.parentNode.parentNode.offsetWidth - 290;
+        ResHeight = player.parentNode.parentNode.offsetHeight - player.parentNode.offsetHeight;
 
         //根据播放器移动的距离做出相应处理
         //当距离最外层父元素的边距超过阈值时会触发定时器，2秒后元素隐藏到窗口外
@@ -53,21 +55,12 @@ const drag = Vue.directive('drag',{
       //鼠标松开时清除mousemove和mouseup事件
       //元素左边距大于0时清除定时器
       document.onmouseup = () => {
-        // if (player.parentNode.offsetLeft>0){
-        //   clearTimeout(timer)
-        // }
+        if (left > 0 && left < ResWidth){
+          clearTimeout(timer)
+        }
         document.onmousemove = null;
         document.onmouseup = null;
       }
-    }
-    //鼠标点击播放器会清除前一个定时器，并重新设置一个新的，定时2秒
-    player.onclick = (e) => {
-      clearTimeout(timer)
-      timer = setTimeout(() => {
-        if (player.parentNode.offsetLeft <= 0){
-          player.parentNode.style.left = -260+'px'
-        }
-      },2000)
     }
   }
 })

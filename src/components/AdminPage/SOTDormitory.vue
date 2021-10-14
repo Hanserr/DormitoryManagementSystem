@@ -47,7 +47,7 @@
             </div>
 
             <div class="SOTDormitory-bottom-a">
-                操作
+              操作
             </div>
 
             <div class="SOTDormitory-bottom-a">
@@ -141,11 +141,11 @@ export default {
       this.loading = true
       let url = "/getDorListByLimit"
       axios.get(url,{params:{initialNumber:this.initialNumber}}).then(res=>{
-        if (res.data.code === 200){
-          for (let i = 0;i<res.data.result.length;i++){
-            this.count.push(res.data.result[i])
+        if (res.status === 200){
+          for (let i = 0;i<res.data.data.length;i++){
+            this.count.push(res.data.data[i])
           }
-          this.initialNumber+=res.data.result.length
+          this.initialNumber+=res.data.data.length
           this.loading = false
         }else{
           this.$message.error("加载时出现了一些问题...")

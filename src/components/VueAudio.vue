@@ -245,23 +245,22 @@ export default {
     //修改样式的公共方法；返回鼠标距进度条左侧的距离
     commonModifyCSS(e){
       let globalToLeft = 0
-      let left = this.getTotalWidth(this.$refs.progressBar)
-      //鼠标中心距页面左侧距离
+      let left = this.getTotalWidth(this.$refs.progressBar)+6
+      //鼠标距页面左侧距离
       let mouseToLeft = e.pageX
       //鼠标距进度条左侧距离
       //防止进度条越界，对距离判断完再赋值
-      if (mouseToLeft - left < 0){
-        globalToLeft =  0
-      }else if (mouseToLeft - left > 150){
-        globalToLeft  = 150
+      if (mouseToLeft - left < -6){
+        globalToLeft =  -6
+      }else if (mouseToLeft - left > 124){
+        globalToLeft  = 124
       }else{
         globalToLeft = mouseToLeft - left
       }
-      this.$refs.progressBar.style.width = globalToLeft/150*100+'%'
-      this.$refs.progressPoint.style.left = (globalToLeft-6)/150*100+'%'
+      this.$refs.progressBar.style.width = (globalToLeft+6)/130*100+'%'
+      this.$refs.progressPoint.style.left = (globalToLeft)/130*100+'%'
       return globalToLeft
     },
-
 
     //初始化
     create(){
@@ -373,10 +372,11 @@ export default {
 
     // 同时处理点击进度条跳转事件
     mouseBarDown(e){
-      this.$refs.audio.currentTime =  Math.floor(this.$refs.audio.duration*(this.commonModifyCSS(e)/150))
-      this.$refs.audio.play()
+      this.$refs.audio.currentTime =  Math.floor(this.$refs.audio.duration*(this.commonModifyCSS(e)/124))
+      this.playImgSrc = require("../assets/img/player/play.png")
       this.diskTop = 10
       this.showRotate = 'running'
+      this.$refs.audio.play()
     },
 
     //进度点处落下鼠标
@@ -396,7 +396,7 @@ export default {
     //鼠标松开时进度条时标识设为false
     mouseBarUp(e){
       this.downed = false
-      this.$refs.audio.currentTime = Math.floor(this.$refs.audio.duration*(this.commonModifyCSS(e)/150))
+      this.$refs.audio.currentTime = Math.floor(this.$refs.audio.duration*(this.commonModifyCSS(e)/124))
     },
 
     //鼠标离开进度点时继续监听进度条
@@ -405,7 +405,7 @@ export default {
     },
 
     //鼠标离开进度条时隐藏进度点
-    hidePoint() {
+    hidePoint(e) {
       this.showPoint = false
       this.downed = false
     },
@@ -549,7 +549,7 @@ body{
   left: 20px;
   z-index: 99;
   transition: all linear 0.2s;
-  animation: move 10s linear infinite;
+  animation: move 15s linear infinite;
 }
 .VueAudio-disk-cover{
   width: 80px;
@@ -647,9 +647,8 @@ body{
 /*歌曲名*/
 #VueAudio-title-musicName{
   text-align: center;
-  width: 300px;
   height: 100%;
-  animation: linear infinite titleMove 5s;
+  /*animation: linear infinite titleMove 5s;*/
 }
 /*歌手*/
 .VueAudio-title-artist{
@@ -708,5 +707,4 @@ body{
   left: 5px;
   cursor: pointer;
 }
-
 </style>

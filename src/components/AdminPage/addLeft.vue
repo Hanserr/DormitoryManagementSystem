@@ -4,9 +4,9 @@
       <div class="stuId" style="margin-left: 100px"><span>SID</span></div>
       <div class="name" style="margin-left: 40px"><span>姓名</span></div>
       <div class="age" style="margin-left: 40px"><span>年龄</span></div>
-      <div class="gender" style="margin-left: 60px"><span>性别</span></div>
-      <div class="department" style="margin-left: 80px"><span>院系</span></div>
-      <div class="role" style="margin-left: 100px"><span></span>宿舍职务</div>
+      <div class="gender" style="margin-left: 25px"><span>性别</span></div>
+      <div class="department" style="margin-left: 90px"><span>院系</span></div>
+      <div class="role" style="margin-left: 80px"><span></span>宿舍职务</div>
       <div class="dormitoryNum" style="margin-left: 50px"><span>宿舍号</span></div>
     </div>
 <!--    data area-->
@@ -113,8 +113,7 @@ export default {
               type: 'success'
             });
           }
-        }).catch(error=>{
-          console.log(error)
+        }).catch(()=>{
           this.$message.error('上传失败！');
         })
 
@@ -124,10 +123,8 @@ export default {
     getDepartmentList(){
       let url = "http://localhost:8090/getDepartmentList"
       axios.get(url).then(res=>{
-        this.items = res.data.result
-        console.log(res.data.result)
-      }).catch(error=>{
-        console.log(error)
+        this.items = res.data.data
+      }).catch(()=>{
         this.$message.error('获取宿舍列表失败！');
       })
     },
