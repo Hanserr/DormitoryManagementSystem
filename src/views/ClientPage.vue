@@ -1,7 +1,6 @@
 <template>
   <div class="ClientPage-Container">
     <VueAudio></VueAudio>
-
     <div class="ClientPage">
       <div class="ClientPage-Top">
         <div class="ClientPage-Top-left">
@@ -55,9 +54,9 @@
             <router-link style="color: #0fa451;text-decoration: none;margin-top: 15px;margin-left: -8px" to="/introduction" target="_blank">Gu</router-link>
             <span style="color: #838383;width: 210px">. © 2021 All Rights Reserved</span>
             <span style="color: #838383;margin-left: 300px">Follow me&nbsp;&nbsp;</span>
-            <img src="../assets/img/clientPage/github.png" alt="github" class="ClientPage-Bottom-Bottom-Icon" @click="openGithub">
-            <img src="../assets/img/clientPage/bilibili.png" alt="bilibili" class="ClientPage-Bottom-Bottom-Icon" @click="openBilibili" style="width: 55px;height: 55px;margin-top: -5px">
-            <img src="../assets/img/clientPage/NEM.png" alt="NEM" class="ClientPage-Bottom-Bottom-Icon" @click="openNEM">
+            <img src="../assets/img/clientPage/github.webp" alt="github" class="ClientPage-Bottom-Bottom-Icon" @click="openGithub">
+            <img src="../assets/img/clientPage/bilibili.webp" alt="bilibili" class="ClientPage-Bottom-Bottom-Icon" @click="openBilibili" style="width: 55px;height: 55px;margin-top: -5px">
+            <img src="../assets/img/clientPage/NEM.webp" alt="NEM" class="ClientPage-Bottom-Bottom-Icon" @click="openNEM">
             <div style="width: 100px;height: 30px;margin-left: 100px;margin-top: 10px">
               <router-link to="/adminLogin" style="text-decoration: none" target="_blank">Admin Entry</router-link>
             </div>

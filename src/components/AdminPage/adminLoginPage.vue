@@ -41,7 +41,7 @@ export default {
   data(){
     return{
       loading:false,
-      pwdImg:require("../../assets/img/AdminPage/pwdInvisible.png"),
+      pwdImg:require("../../assets/img/AdminPage/pwdInvisible.webp"),
       showPwdVisible:false,
       captchaUrl:null,
       admin:{
@@ -67,12 +67,12 @@ export default {
     },
     //密码显示
     pwdVisible(){
-        this.pwdImg = require('../../assets/img/AdminPage/pwdVisible.png')
+        this.pwdImg = require('../../assets/img/AdminPage/pwdVisible.webp')
         this.$refs.pwdInput.type = 'text'
     },
     //密码隐藏
     pwdInvisible(){
-        this.pwdImg = require('../../assets/img/AdminPage/pwdInvisible.png')
+        this.pwdImg = require('../../assets/img/AdminPage/pwdInvisible.webp')
         this.$refs.pwdInput.type = 'password'
     },
     //点击登录

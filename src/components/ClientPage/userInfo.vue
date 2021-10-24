@@ -1,14 +1,28 @@
 <template>
   <div class="userInfo">
     <div class="userInfo-container">
+      <div class="userInfo-container-top">
+        <div class="userInfo-container-top-left" @click="uploadAva">
 
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "userInfo"
+  name: "userInfo",
+  data(){
+    return{
+
+    }
+  },
+  methods:{
+    uploadAva(){
+      this.$router.push('/uploadAvatar','_blank')
+    }
+  }
 }
 </script>
 

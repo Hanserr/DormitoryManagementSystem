@@ -12,6 +12,9 @@ const selfIntroduction = r => require.ensure([],() => r(require('./views/selfInt
 const adminLoginPage = r => require.ensure([],() => r(require('./components/AdminPage/adminLoginPage')),'adminLoginPage')
 const Admin = r => require.ensure([],() => r(require('./components/AdminPage/Admin')),'Admin')
 const userInfo = r => require.ensure([],() => r(require('./components/ClientPage/userInfo')),'userInfo')
+const cantFindPage = r => require.ensure([],() => r(require('./views/cantFindPage')),'cantFindPage')
+const failurePage = r => require.ensure([],() => r(require('./views/failurePage')),'failurePage')
+const uploadAvatar = r => require.ensure([],() => r(require('./components/ClientPage/uploadAvatar')),'uploadAvatar')
 
 const routes = [
   {
@@ -123,6 +126,30 @@ const routes = [
     meta: {
       title: '个人中心'
     }},
+  {
+    name:'failurePage',
+    component:failurePage,
+    path: "/failurePage",
+    meta: {
+      title: "服务器错误"
+    }
+  },
+  {
+    name:'cantFindPage',
+      component:cantFindPage,
+    path: "*",
+    meta: {
+    title: "找不到这个页面"
+  }
+  },
+  {
+    name:'uploadAvatar',
+    path: '/uploadAvatar',
+    component:uploadAvatar,
+    meta:{
+      title: '上传头像'
+    }
+  }
 ]
 
 export default routes

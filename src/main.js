@@ -40,6 +40,26 @@ axios.interceptors.request.use(config =>{
   }
 )
 
+Vue.prototype.$http.interceptors.response.use(res => {
+  if (res.data.code === 401){
+    router.push('/')
+  }
+  return res;
+},error => {
+  if (error && error.response){
+    switch (error.response.status){
+      case 404:
+        router.push('/cantFindPage')
+        break
+      case 500:
+        router.push('/failurePage')
+        break
+    }
+    return Promise.reject(error)
+  }
+  }
+)
+
 export const router = new VueRouter({
   mode:'history',
   routes:routes
@@ -50,7 +70,11 @@ router.beforeEach((to,from,next)=>{
   if (to.matched.some(r => r.meta.requireAuth)){
     if (!store.state.token){
       store.commit('SET_TOKEN', sessionStorage.getItem('token'))
-      next()
+      if (!sessionStorage.getItem('token') || sessionStorage.getItem('token') === "null"){
+        next("/")
+      }else{
+        next()
+      }
     }else{
       next();
     }

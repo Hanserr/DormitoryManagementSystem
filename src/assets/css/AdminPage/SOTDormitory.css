@@ -16,7 +16,7 @@ ul,li{
   width: 97.5%;
   height: 100px;
   overflow: hidden;
-  background:url("../../img/AdminPage/banner.png") no-repeat;
+  background:url("../../img/AdminPage/banner.webp") no-repeat;
   background-size: cover;
   border-radius: 10px;
   margin: 10px auto;
@@ -41,6 +41,10 @@ ul,li{
   background-color: #61c5d0;
   float: left;
 }
+.SOTDormitory-bottom-left-son{
+  height: 600px;
+  overflow-y: auto;
+}
 .SOTDormitory-bottom-left-son li{
   background-color: #c4dae6;
   width: 70px;
@@ -56,7 +60,7 @@ ul,li{
   width: 1090px;
   height: 600px;
   float: left;
-  background: url("../../img/AdminPage/SOTDormitory-bg.png") no-repeat;
+  background: url("../../img/AdminPage/SOTDormitory-bg.webp") no-repeat;
   background-size: 100% 100%;
   border-radius: 10px;
   margin-left: 20px;

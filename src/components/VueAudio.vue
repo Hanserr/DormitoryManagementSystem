@@ -1,5 +1,5 @@
 <template>
-  <div class="VueAudio" style="width: 290px;height: 180px;overflow: hidden;position: absolute;top: 600px;left: 0" ref="VueAudio">
+  <div class="VueAudio" style="width: 293px;height: 180px;overflow: hidden;position: fixed;top: 500px;left: 0" ref="VueAudio">
     <audio ref="audio" preload="auto"></audio>
 <!--黑胶碟片-->
     <div class="VueAudio-disk" :style="{top:diskTop+'px','animation-play-state':showRotate}">
@@ -8,9 +8,9 @@
 <!--控制-->
     <div class="VueAudio-control" ref="player" v-drag>
       <div class="VueAudio-control-panel">
-        <img src="../assets/img/player/previous.png" alt="上一首" @click="previous()">
+        <img src="../assets/img/player/previous.webp" alt="上一首" @click="previous()">
         <img :src="this.playImgSrc" alt="播放" @click="play()">
-        <img src="../assets/img/player/next.png" alt="下一首" @click="next()">
+        <img src="../assets/img/player/next.webp" alt="下一首" @click="next()">
       </div>
       <!--    标题；歌手-->
       <div class="VueAudio-title">
@@ -61,8 +61,8 @@ export default {
   data(){
     return{
       diskTop:40, //黑胶盘片距顶部高度
-      playImgSrc:require("../assets/img/player/pause.png"), //暂停图标
-      volumeImg:require('../assets/img/player/volume.png'), //音量图标
+      playImgSrc:require("../assets/img/player/pause.webp"), //暂停图标
+      volumeImg:require('../assets/img/player/volume.webp'), //音量图标
       showVolume:false, //显示音量条
       showVolumeTimer:null, //音量条显示定时器
       showRotate:'pause', //黑胶片旋转
@@ -73,7 +73,7 @@ export default {
       downed:false, //鼠标是否落下
       showPoint:false, //是否显示进度点
       playerMode:1, //播放方式：1顺序 2随机 3单曲循环
-      modeImg:require("../assets/img/player/inOrder.png"),//播放方式图片
+      modeImg:require("../assets/img/player/inOrder.webp"),//播放方式图片
       modeDescription:null,//对播放模式的说明
 
       song:{
@@ -86,17 +86,13 @@ export default {
       },
 
       songList:[
-        1804540509,//云端飞行
+        1392089491,//keep you mine
         1457707546,//love story
-        1837826526,//数羊
-        1500455486,//侥幸
-        1436560359,//我试着
+        28481404,//endless road
         1442466883,//花に亡霊
         1810759818,//今日重到苏澜桥
-        1832381621,//糸
         1830490788,//爱就一个字
         631060,//人形ノ涙
-        1417236632,//描绘着那场梦
         1482647103,//你不在故事里
       ],
 
@@ -107,11 +103,11 @@ export default {
     play() {
       if (this.$refs.audio.paused) {
         this.$refs.audio.play()
-        this.playImgSrc = require("../assets/img/player/play.png")
+        this.playImgSrc = require("../assets/img/player/play.webp")
         this.diskTop = 10
         this.showRotate = 'running'
       } else {
-        this.playImgSrc = require("../assets/img/player/pause.png")
+        this.playImgSrc = require("../assets/img/player/pause.webp")
         this.diskTop = 40
         this.showRotate = 'paused'
         this.tempVolume = this.$refs.audio.volume
@@ -130,17 +126,17 @@ export default {
       switch (currentMode){
         case 1:
           this.playerMode = 2
-          this.modeImg = require("../assets/img/player/random.png")
+          this.modeImg = require("../assets/img/player/random.webp")
           this.modeDescription = '随机播放'
           break
         case 2:
           this.playerMode = 3
-          this.modeImg = require("../assets/img/player/cycle.png")
+          this.modeImg = require("../assets/img/player/cycle.webp")
           this.modeDescription = '单曲循环'
           break
         case 3:
           this.playerMode = 1
-          this.modeImg = require("../assets/img/player/inOrder.png")
+          this.modeImg = require("../assets/img/player/inOrder.webp")
           this.modeDescription = '顺序播放'
           break
       }
@@ -196,7 +192,7 @@ export default {
 
     //更新音乐的方法；传入id
     updateMusic(id){
-      let musicUrl = 'https://api.imjad.cn/cloudmusic/?type=song&id='+id
+      let musicUrl = 'https://api.imjad.cn/cloudmusic/?type=song&id='+id+'&br=320000'
       let detailUrl = 'https://api.imjad.cn/cloudmusic/?type=detail&id='+id
       axios.get(detailUrl).then((res) => {
         //获取音乐细节
@@ -259,7 +255,7 @@ export default {
       }
       this.$refs.progressBar.style.width = (globalToLeft+6)/130*100+'%'
       this.$refs.progressPoint.style.left = (globalToLeft)/130*100+'%'
-      return globalToLeft
+      return globalToLeft+6
     },
 
     //初始化
@@ -328,7 +324,7 @@ export default {
       this.$refs.audio.onended = () => {
         this.showRotate = 'paused'
         this.diskTop = 40
-        this.playImgSrc = require("../assets/img/player/pause.png")
+        this.playImgSrc = require("../assets/img/player/pause.webp")
         setTimeout(()=>{
           this.next()
         },2000)
@@ -360,8 +356,9 @@ export default {
     //监听已播放时间
     progressWatcher(){
       return this.$watch('song.currentTime',(newVal,oldVal) => {
+        let i = (newVal/this.$refs.audio.duration)*130-4+'px';
         this.$refs.progressBar.style.width = (newVal/this.$refs.audio.duration)*100+'%'
-        this.$refs.progressPoint.style.left = (newVal/this.$refs.audio.duration)*100+'%'
+        this.$refs.progressPoint.style.left = i
       })
     },
 
@@ -373,7 +370,7 @@ export default {
     // 同时处理点击进度条跳转事件
     mouseBarDown(e){
       this.$refs.audio.currentTime =  Math.floor(this.$refs.audio.duration*(this.commonModifyCSS(e)/124))
-      this.playImgSrc = require("../assets/img/player/play.png")
+      this.playImgSrc = require("../assets/img/player/play.webp")
       this.diskTop = 10
       this.showRotate = 'running'
       this.$refs.audio.play()
@@ -396,7 +393,7 @@ export default {
     //鼠标松开时进度条时标识设为false
     mouseBarUp(e){
       this.downed = false
-      this.$refs.audio.currentTime = Math.floor(this.$refs.audio.duration*(this.commonModifyCSS(e)/124))
+      this.$refs.audio.currentTime = Math.floor(this.$refs.audio.duration*(this.commonModifyCSS(e)/130))
     },
 
     //鼠标离开进度点时继续监听进度条
@@ -413,14 +410,14 @@ export default {
     //控制静音或取消静音
     muted(){
       if(this.$refs.audio.muted) {
-        this.volumeImg = require('../assets/img/player/volume.png')
+        this.volumeImg = require('../assets/img/player/volume.webp')
         this.$refs.audio.muted = false
         //取消静音时把音量恢复到静音前数据
         this.$refs.audio.volume = this.tempVolume
         //高度相应的变化
         this.$refs.volumeBarInside.style.height = this.tempVolume*100+'%'
       }else{
-        this.volumeImg = require('../assets/img/player/muted.png')
+        this.volumeImg = require('../assets/img/player/muted.webp')
         //静音时把音量条高度设为0%
         this.$refs.volumeBarInside.style.height = 0+'%'
         this.$refs.audio.muted = true
@@ -445,7 +442,7 @@ export default {
     //开始控制音量:同时处理鼠标点击修改音量的方法
     startVolumeEvent(e){
       this.$refs.audio.muted = false
-      this.volumeImg = require('../assets/img/player/volume.png')
+      this.volumeImg = require('../assets/img/player/volume.webp')
       // 音量条顶端至窗口顶端的距离
       let barTop = this.getTotalHeight(this.$refs.volumeBarInside)
       // 音量条底端至窗口顶端的距离
@@ -540,7 +537,7 @@ body{
   font-family: Harmony;
 }
 .VueAudio-disk{
-  background: url("../assets/img/player/diskBackground.png")no-repeat;
+  background: url("../assets/img/player/diskBackground.webp")no-repeat;
   background-size: 100% 100%;
   width: 100px;
   height: 100px;
@@ -567,7 +564,7 @@ body{
   top: -50px;
   left: 5px;
   border-radius: 10px;
-  box-shadow: 1px 1px 7px 1px #2c2c2c;
+  box-shadow: 2px 2px 6px 1px #2c2c2c;
 }
 /*控制区*/
 .VueAudio-control-panel{

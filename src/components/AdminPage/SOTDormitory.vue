@@ -31,7 +31,7 @@
           <div class="SOTDormitory-bottom-table">
 
             <div class="SOTDormitory-bottom-a">
-              宿舍号：{{detail.length === 0?'---':detail[0].id}}
+              宿舍号：{{detail.length === 0?'---':detail.id}}
             </div>
 
             <div class="SOTDormitory-bottom-a">
@@ -55,11 +55,11 @@
             </div>
 
             <div class="SOTDormitory-bottom-a">
-              {{detail.length === 0?'---':detail[0].waterbalance}}
+              {{detail.length === 0?'---':detail.waterbalance}}
             </div>
 
             <div class="SOTDormitory-bottom-a">
-              {{detail.length === 0?'---':detail[0].waterbalance}}
+              {{detail.length === 0?'---':detail.waterbalance}}
             </div>
 
             <div class="SOTDormitory-bottom-a">
@@ -75,11 +75,11 @@
             </div>
           <!--balance-->
             <div class="SOTDormitory-bottom-a">
-              {{detail.length === 0?'---':detail[0].powerbalance}}
+              {{detail.length === 0?'---':detail.powerbalance}}
             </div>
           <!--used-->
             <div class="SOTDormitory-bottom-a">
-              {{detail.length === 0?'---':detail[0].powerbalance}}
+              {{detail.length === 0?'---':detail.powerbalance}}
             </div>
 
             <div class="SOTDormitory-bottom-a">
@@ -93,29 +93,23 @@
             <div class="SOTDormitory-bottom-a">
               流量
             </div>
-
             <!--balance-->
             <div class="SOTDormitory-bottom-a">
-              {{detail.length === 0?'---':detail[0].powerbalance}}
+              {{detail.length === 0?'---':detail.powerbalance}}
             </div>
             <!--used-->
             <div class="SOTDormitory-bottom-a">
-              {{detail.length === 0?'---':detail[0].powerbalance}}
+              {{detail.length === 0?'---':detail.powerbalance}}
             </div>
-
             <div class="SOTDormitory-bottom-a">
               是
             </div>
-
             <div class="SOTDormitory-bottom-a">
               operation
             </div>
-
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
 </template>
@@ -146,13 +140,12 @@ export default {
             this.count.push(res.data.data[i])
           }
           this.initialNumber+=res.data.data.length
-          this.loading = false
         }else{
           this.$message.error("加载时出现了一些问题...")
-          this.loading = false
         }
       }).catch(()=>{
         this.$message.error("加载时出现了一些问题...")
+      }).finally(()=>{
         this.loading = false
       })
     },
@@ -162,7 +155,7 @@ export default {
       let url = '/getDormitoryDetail'
       axios.get(url,{params:{id:num}}).then(res=>{
         if (res.data.code === 200){
-          this.detail = res.data.result
+          this.detail = res.data.data[0]
           this.loading = false
         }else{
           this.$message.error("获取详细信息失败")

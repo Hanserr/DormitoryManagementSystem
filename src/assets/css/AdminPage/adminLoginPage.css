@@ -5,13 +5,13 @@ body{
 .adminLoginPage{
   width:100vw;
   height: 100vh;
-  background: url("../../img/AdminPage/adminLogin.jpg") no-repeat;
+  background: url("../../img/AdminPage/adminLogin.webp") no-repeat;
   background-size: cover;
   overflow: hidden;
 }
 /*右侧内容区域*/
 .adminLoginPage-container{
-  background: url("../../img/AdminPage/loginContainer.png") no-repeat;
+  background: url("../../img/AdminPage/loginContainer.webp") no-repeat;
   background-size: cover;
   position: absolute;
   top: 50%;

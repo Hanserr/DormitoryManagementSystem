@@ -15,7 +15,7 @@ export default {
   name: "welcome",
   data(){
     return{
-      imgSrc:require('../../assets/img/wel.jpg')
+      imgSrc:require('../../assets/img/wel.webp')
     }
   }
 }
