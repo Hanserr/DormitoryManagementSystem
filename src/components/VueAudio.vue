@@ -3,13 +3,13 @@
     <audio ref="audio" preload="auto"></audio>
 <!--黑胶碟片-->
     <div class="VueAudio-disk" :style="{top:diskTop+'px','animation-play-state':showRotate}">
-      <img :src="this.song.coverPath" alt="cover" class="VueAudio-disk-cover">
+      <img :src="this.song.coverPath" alt="cover" class="VueAudio-disk-cover" v-show = "this.song.coverPath !==''">
     </div>
 <!--控制-->
     <div class="VueAudio-control" ref="player" v-drag>
       <div class="VueAudio-control-panel">
         <img src="../assets/img/player/previous.webp" alt="上一首" @click="previous()">
-        <img :src="this.playImgSrc" alt="播放" @click="play()">
+        <img :src="this.playImgSrc" alt="播放" @click="controlPlay()">
         <img src="../assets/img/player/next.webp" alt="下一首" @click="next()">
       </div>
       <!--    标题；歌手-->
@@ -99,19 +99,27 @@ export default {
     }
   },
   methods: {
+    //播放
+    play(){
+      this.$refs.audio.play()
+      this.playImgSrc = require("../assets/img/player/play.webp")
+      this.diskTop = 10
+      this.showRotate = 'running'
+    },
+    //暂停
+    pause(){
+      his.playImgSrc = require("../assets/img/player/pause.webp")
+      this.diskTop = 40
+      this.showRotate = 'paused'
+      this.tempVolume = this.$refs.audio.volume
+      this.$refs.audio.pause()
+    },
     //控制播放或暂停
-    play() {
-      if (this.$refs.audio.paused) {
-        this.$refs.audio.play()
-        this.playImgSrc = require("../assets/img/player/play.webp")
-        this.diskTop = 10
-        this.showRotate = 'running'
+    controlPlay() {
+      if (this.$refs.audio.paused && this.song.musicPath !== '') {
+        this.play()
       } else {
-        this.playImgSrc = require("../assets/img/player/pause.webp")
-        this.diskTop = 40
-        this.showRotate = 'paused'
-        this.tempVolume = this.$refs.audio.volume
-        this.$refs.audio.pause()
+        this.pause()
       }
     },
 

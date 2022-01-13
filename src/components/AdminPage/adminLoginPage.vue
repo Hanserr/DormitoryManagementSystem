@@ -83,7 +83,7 @@ export default {
       const regPhone = /^1[0-9]{10}$/
 
       if (regPhone.test(this.admin.username) && !this.$strIsNull(this.admin.code)){
-          let url = "/login"
+          let url = "/adminLogin"
           axios.post(url,this.admin).then((res) => {
             if (res.data.code === 200){
               const jwt = res.headers['authorization']
